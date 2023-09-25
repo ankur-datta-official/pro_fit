@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 
 class intro extends StatefulWidget {
   const intro({super.key});
@@ -8,6 +10,19 @@ class intro extends StatefulWidget {
 }
 
 class _introState extends State<intro> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _navigatetohome();
+  }
+
+  _navigatetohome()async
+  {
+    await Future.delayed(Duration(milliseconds: 1500), () {});
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>home() ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
