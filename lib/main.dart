@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:pro_fit/intro.dart';
-import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
+import 'package:firebase_core/firebase_core.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/nutritionpage.dart';
+import 'firebase_options.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/login.dart';
 
-void main() {
-  runApp(const MyApp());
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/signup.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure that Flutter is initialized.
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,12 +24,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF1c1c1e),
-        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+     debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xff8f9311),
+        scaffoldBackgroundColor: Color(0xff1b1819),
       ),
-      home: const home(),
+      
+      home: NutritionPage(),
     );
   }
 }
