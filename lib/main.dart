@@ -1,6 +1,7 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
+// import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/nutritionpage.dart';
