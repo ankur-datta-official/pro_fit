@@ -65,7 +65,6 @@ class _homeState extends State<home> {
                  blurRadius: 10,
                 )],
               ),
-              child: ,
             ),
           ],
         ),
