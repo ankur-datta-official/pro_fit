@@ -1,12 +1,15 @@
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/nutritionpage.dart';
 import 'firebase_options.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:pro_fit/intro.dart';
+
 
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/signup.dart';
@@ -32,9 +35,9 @@ class MyApp extends StatelessWidget {
         //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: home(),
+      home: dashboard(),
 
-      /*AnimatedSplashScreen(
+      /*home: AnimatedSplashScreen(
           splash: Center(
         child: Container(
           padding: EdgeInsets.only(left: 115),
