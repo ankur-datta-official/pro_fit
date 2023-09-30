@@ -1,11 +1,26 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
+// import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:pro_fit/intro.dart';
-import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/dashboard.dart';
-import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/nutritionpage.dart';
+import 'firebase_options.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:pro_fit/intro.dart';
+
+
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/signup.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure that Flutter is initialized.
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
