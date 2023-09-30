@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pro_fit/intro.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/dashboard.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 
 void main() {
@@ -19,9 +20,9 @@ class MyApp extends StatelessWidget {
         //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: home(),
+      home: dashboard(),
 
-      /*AnimatedSplashScreen(
+      /*home: AnimatedSplashScreen(
           splash: Center(
         child: Container(
           padding: EdgeInsets.only(left: 115),
