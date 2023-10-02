@@ -9,9 +9,10 @@ class NutritionPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text("Nutritional Foods")),
+          title: Center(child: Text("Nutritional Foods",style: TextStyle(color: Colors.white),)),
           backgroundColor: Color(0xff1d1a1b),
           bottom: TabBar(
+            labelColor: Colors.amber,
             tabs: [
               Tab(text: 'Breakfast'),
               Tab(text: 'Lunch'),
@@ -35,14 +36,61 @@ class NutritionPage extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.amber,
+              Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: Container(
+                  height: 150,
+                  width: 200,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),),
+                  child: Image.asset("assets/images/breakfast1.jpg",fit: BoxFit.fill,)
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Column(
+                  children: [
+                    Text("Rise and Dine: ",style: TextStyle(color: Colors.white),),
+                    Text("Start Your Day with",style: TextStyle(color: Colors.white),),
+                    Text("a Delicious Breakfast! ",style: TextStyle(color: Colors.white),),
+                  ],
+                )
               )
             ],
-          )
+          ),
+         
+          Padding(
+            padding: const EdgeInsets.only(top: 10,left: 15,right: 15,bottom: 20),
+            child: Container(
+              height: 50,width: double.infinity,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.amber),child: Center(child: Text(" Breakfast Foods ",style: TextStyle(fontSize: 25),)),),
+          ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Protein-rich foods:",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("eggs, Greek yogurt, lean meats, tofu, and nut butter",style: TextStyle(color: Colors.white),),
+        
+              SizedBox(height: 10,),
+                Text("Whole grains:",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("eggs, Greek yogurt, lean meats, tofu, and nut butter",style: TextStyle(color: Colors.white),),
+                 SizedBox(height: 10,),
+                Text("Fruits",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("berries, bananas, apples, and citrus fruits.",style: TextStyle(color: Colors.white),),
+                 SizedBox(height: 10,),
+                Text("Fiber-rich foods:",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text(" bran cereals, whole-grain bread, and chia seeds.",style: TextStyle(color: Colors.white),),
+        
+              ],
+            )
+          ],),
+        )
         ],
       ),
 
@@ -50,10 +98,136 @@ class NutritionPage extends StatelessWidget {
   }
   
   Lunch() {
-    return Container();
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+               Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Column(
+                  children: [
+                    Text("Food in Lunch ",style: TextStyle(color: Colors.white),),
+                    Text("",style: TextStyle(color: Colors.white),),
+                    Text("",style: TextStyle(color: Colors.white),),
+                  ],
+                )
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 50,top: 15),
+                child: Container(
+                  height: 150,
+                  width: 200,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),),
+                  child: Image.asset("assets/images/lunch.jpg",fit: BoxFit.fill,)
+                ),
+              ),
+             
+            ],
+          ),
+         
+          Padding(
+            padding: const EdgeInsets.only(top: 10,left: 15,right: 15,bottom: 20),
+            child: Container(
+              height: 50,width: double.infinity,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.amber),child: Center(child: Text(" Lunch Foods ",style: TextStyle(fontSize: 25),)),),
+          ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Lean Proteins:",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("grilled chicken, turkey, fish, legumes like beans and lentils.",style: TextStyle(color: Colors.white),),
+        
+              SizedBox(height: 10,),
+                Text("Vegetables: ",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("green vegetables have vitamins, minerals, and fiber.",style: TextStyle(color: Colors.white),),
+                 SizedBox(height: 10,),
+                Text("Healthy Fats:",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("avocados, nuts, seeds, or olive oil. ",style: TextStyle(color: Colors.white),),
+                 SizedBox(height: 10,),
+                Text("Portion Control: ",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text(" Pay attention to portion sizes to avoid overeating. ",style: TextStyle(color: Colors.white),),
+        
+              ],
+            )
+          ],),
+        )
+        ],
+      ),
+
+    );
   }
   
   DinnerContent() {
-    return Container();
+     return Container(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: Container(
+                  height: 150,
+                  width: 200,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),),
+                  child: Image.asset("assets/images/dinner.jpg",fit: BoxFit.fill,)
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Column(
+                  children: [
+                    Text("Dinner Food ",style: TextStyle(color: Colors.white),),
+                    Text(" last meal of the day",style: TextStyle(color: Colors.white),),
+                    Text(" ",style: TextStyle(color: Colors.white),),
+                  ],
+                )
+              )
+            ],
+          ),
+         
+          Padding(
+            padding: const EdgeInsets.only(top: 10,left: 15,right: 15,bottom: 20),
+            child: Container(
+              height: 50,width: double.infinity,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.amber),child: Center(child: Text(" Dinner Foods ",style: TextStyle(fontSize: 25),)),),
+          ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Complex Carbohydrates:",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("Opt for complex carbohydrates like sweet potatoes",style: TextStyle(color: Colors.white),),
+        
+              SizedBox(height: 10,),
+                Text("Salads:",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("side salad with your dinner for added fiber and vitamins.",style: TextStyle(color: Colors.white),),
+                 SizedBox(height: 10,),
+                Text("Lean Proteins:",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("chicken, turkey, fish, or plant-based options.",style: TextStyle(color: Colors.white),),
+                 SizedBox(height: 10,),
+                Text("Limit Late-Night Snacking: ",style: TextStyle(fontSize:20,fontWeight: FontWeight.w400,color: Colors.white),),
+                Text("Try to finish eating a few hours before bedtime to ",style: TextStyle(color: Colors.white),),
+                Text(" allow for proper digestion",style: TextStyle(color: Colors.white),),
+        
+              ],
+            )
+          ],),
+        )
+        ],
+      ),
+
+    );
   }
 }

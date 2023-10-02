@@ -1,13 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/foodpage.dart';
 
-class home extends StatefulWidget {
-  const home({super.key});
+class Home extends StatefulWidget {
+  const Home({Key? key});
 
   @override
-  State<home> createState() => _homeState();
+  _HomeState createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
+class _HomeState extends State<Home> {
   int _currentIndex = 0;
 
   @override
@@ -20,7 +22,8 @@ class _homeState extends State<home> {
             children: [
               Expanded(
                 child: Center(
-                  child: Text("HOME",
+                  child: Text(
+                    "HOME", // Change "Home" to "HOME" for consistency
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 26,
@@ -31,7 +34,14 @@ class _homeState extends State<home> {
                 flex: 9,
               ),
               Expanded(
-                  child: Icon(Icons.logout_rounded, color: Colors.white, size: 32,),
+                child: IconButton(
+                  onPressed: _signOut,
+                  icon: Icon(
+                    Icons.logout_rounded,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
                 flex: 1,
               ),
             ],
@@ -44,35 +54,33 @@ class _homeState extends State<home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //Welcome User
             Text("Hi, User", style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.w700),
-            ),
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+            )),
             Text("Let's Make Progress Together!", style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w500),
-            ),
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            )),
             SizedBox(height: 30),
-            //Today's Workout plan card
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: Text("Today's Workout Plan", style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700
-                  ),),
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700
+                  )),
                   flex: 6,
                 ),
                 Expanded(
                   child: Text("Mon 18, Sep", style: TextStyle(
-                      color: Colors.yellow,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400
+                    color: Colors.yellow,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400
                   )),
                   flex: 2,
                 ),
@@ -83,11 +91,12 @@ class _homeState extends State<home> {
               color: Color(0xFF1c1c1e),
               child: Stack(
                 children: [
-                  Ink.image(image: AssetImage("assets/images/img_1.png"),
-                  child: InkWell(
-                    onTap: () {},
-                  ),
-                  height: 175,
+                  Ink.image(
+                    image: AssetImage("assets/images/img_1.png"),
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                    height: 175,
                     fit: BoxFit.cover,
                   ),
                   Padding(
@@ -96,14 +105,14 @@ class _homeState extends State<home> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Workout Library", style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500
-                        ),),
+                          color:Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                        )),
                         Text("|  20 Minutes", style: TextStyle(
-                            color:Colors.yellow,
-                            fontSize: 17
-                        ),),
+                          color:Colors.yellow,
+                          fontSize: 17
+                        )),
                       ],
                     ),
                   ),
@@ -111,18 +120,18 @@ class _homeState extends State<home> {
               ),
             ),
             SizedBox(height: 20),
-            //Progress Tracker Card
             Text("Progress Tracker", style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w700
-            ),),
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w700
+            )),
             SizedBox(height: 13),
             Card(
               color: Color(0xFF1c1c1e),
               child: Stack(
                 children: [
-                  Ink.image(image: AssetImage("assets/images/img_2.png"),
+                  Ink.image(
+                    image: AssetImage("assets/images/img_2.png"),
                     child: InkWell(
                       onTap: () {},
                     ),
@@ -135,14 +144,14 @@ class _homeState extends State<home> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Fitness Stats", style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 17,
+                          color:Colors.white,
+                          fontSize: 17,
                           fontWeight: FontWeight.w500
-                        ),),
+                        )),
                         Text("|  Track Your Fitness Journey, One Step at a Time.", style: TextStyle(
-                            color:Colors.yellow,
-                            fontSize: 14
-                        ),),
+                          color:Colors.yellow,
+                          fontSize: 14
+                        )),
                       ],
                     ),
                   ),
@@ -150,18 +159,18 @@ class _homeState extends State<home> {
               ),
             ),
             SizedBox(height: 20),
-            //Nutrition card
             Text("Nutrition Guide", style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w700
-            ),),
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w700
+            )),
             SizedBox(height: 13),
             Card(
               color: Color(0xFF1c1c1e),
               child: Stack(
                 children: [
-                  Ink.image(image: AssetImage("assets/images/img_3.png"),
+                  Ink.image(
+                    image: AssetImage("assets/images/img_3.png"),
                     child: InkWell(
                       onTap: () {},
                     ),
@@ -174,14 +183,14 @@ class _homeState extends State<home> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Diet & Nutrition", style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500
-                        ),),
+                          color:Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                        )),
                         Text("|  Eat Well, Live Well: Your Path to Nutritional Success.", style: TextStyle(
-                            color:Colors.yellow,
-                            fontSize: 13
-                        ),),
+                          color:Colors.yellow,
+                          fontSize: 13
+                        )),
                       ],
                     ),
                   ),
@@ -189,18 +198,18 @@ class _homeState extends State<home> {
               ),
             ),
             SizedBox(height: 20),
-            //Chellange & Reward card
             Text("Fitness Challenges", style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w700
-            ),),
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w700
+            )),
             SizedBox(height: 13),
             Card(
               color: Color(0xFF1c1c1e),
               child: Stack(
                 children: [
-                  Ink.image(image: AssetImage("assets/images/img_4.png"),
+                  Ink.image(
+                    image: AssetImage("assets/images/img_4.png"),
                     child: InkWell(
                       onTap: () {},
                     ),
@@ -213,28 +222,26 @@ class _homeState extends State<home> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Achievement Zone", style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500
-                        ),),
+                          color:Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                        )),
                         Text("|  Earn Rewards, and Crush Your Fitness Challenges!", style: TextStyle(
-                            color:Colors.yellow,
-                            fontSize: 14
-                        ),),
+                          color:Colors.yellow,
+                          fontSize: 14
+                        )),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-
           ],
         ),
       ),
-
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-            border: Border(top: BorderSide(color: Colors.yellow, width: 2.0)),
+          border: Border(top: BorderSide(color: Colors.yellow, width: 2.0)),
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -246,8 +253,12 @@ class _homeState extends State<home> {
           backgroundColor: Color(0xFF1c1c1e),
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.workspace_premium_rounded),
-                label: "Premium",
+              icon: GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>FoodPage()));
+                },
+                child: Icon(Icons.workspace_premium_rounded)),
+              label: "Premium",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.celebration_rounded),
@@ -275,5 +286,17 @@ class _homeState extends State<home> {
       ),
     );
   }
-}
 
+  // Signout function
+  void _signOut() async {
+    await FirebaseAuth.instance.signOut();
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Text("Logged out successfully"),
+        );
+      },
+    );
+  }
+}
