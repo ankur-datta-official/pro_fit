@@ -1,10 +1,17 @@
-// import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/dashboard.dart';
 
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
+import 'package:pro_fit/modules/Legality/privacy_policy.dart';
+import 'package:pro_fit/modules/challanges/challanges.dart';
+import 'package:pro_fit/modules/loginsignup/login.dart';
+import 'package:pro_fit/modules/loginsignup/signup.dart';
+import 'package:pro_fit/modules/nutrition/nutritionpage.dart';
+import 'package:pro_fit/navigation.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
-import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/nutritionpage.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/nutritionpage.dart';
 import 'firebase_options.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/login.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,10 +39,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF1c1c1e),
-        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: dashboard(),
+      home: bottomNavigation(),
 
       /*home: AnimatedSplashScreen(
           splash: Center(
@@ -58,7 +64,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-        nextScreen: home(),
+        nextScreen: LoginPage(),
           duration: 3000,
           splashTransition: SplashTransition.scaleTransition,
           backgroundColor: Color(0xFF1c1c1e),

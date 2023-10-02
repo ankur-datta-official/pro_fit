@@ -9,7 +9,20 @@ class NutritionPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text("Nutritional Foods")),
+          leading: new IconButton(
+            icon: Icon(Icons.arrow_circle_left_outlined,
+              color: Colors.white, size: 34,),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title:  Center(
+            child: Text("NUTRITION",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 26,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
           backgroundColor: Color(0xff1d1a1b),
           bottom: TabBar(
             tabs: [
