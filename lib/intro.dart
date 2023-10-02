@@ -20,7 +20,7 @@ class _introState extends State<intro> {
   _navigatetohome()async
   {
     await Future.delayed(Duration(milliseconds: 1500), () {});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>home() ));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home() ));
   }
 
   @override

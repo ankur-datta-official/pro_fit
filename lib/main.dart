@@ -1,18 +1,18 @@
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
-//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
-//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
-import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/nutritionpage.dart';
 import 'firebase_options.dart';
-//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/login.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/login.dart';
+// import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/signup.dart';
+ import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/foodpage.dart';
+// import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/nutritionpage.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/foodpage.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
-//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/signup.dart';
+//import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/challanges/challanges.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Ensure that Flutter is initialized.
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure that Flutter is initialized and important to start firebase.
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -27,12 +27,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF1c1c1e),
-        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xff8f9311),
+        scaffoldBackgroundColor: Color(0xff1b1819),
         useMaterial3: true,
       ),
-      home: home(),
+      initialRoute: '/login',
+      routes: {
+        // Define your named routes here
+        '/login': (context) => LoginPage(),
+      //  '/profile': (context) => (),
+        // Add more routes as needed
+      },
+
+      home: Home(),
 
       /*AnimatedSplashScreen(
           splash: Center(

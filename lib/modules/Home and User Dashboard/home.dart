@@ -1,14 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/nutrition/foodpage.dart';
 
-class home extends StatefulWidget {
-  const home({super.key});
+class Home extends StatefulWidget {
+  const Home({Key? key});
 
   @override
-  State<home> createState() => _homeState();
+  _HomeState createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
+class _HomeState extends State<Home> {
   int _currentIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,8 @@ class _homeState extends State<home> {
             children: [
               Expanded(
                 child: Center(
-                  child: Text("Home",
+                  child: Text(
+                    "Home",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -31,7 +35,14 @@ class _homeState extends State<home> {
                 flex: 9,
               ),
               Expanded(
-                  child: Icon(Icons.logout_rounded, color: Colors.white, size: 32,),
+                child: IconButton(
+                  onPressed: _signOut,
+                  icon: Icon(
+                    Icons.logout_rounded,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
                 flex: 1,
               ),
             ],
@@ -43,15 +54,21 @@ class _homeState extends State<home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Hi, User", style: TextStyle(
+            Text(
+               "Hi, User",
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontWeight: FontWeight.w700),
+                fontWeight: FontWeight.w700,
+              ),
             ),
-            Text("Let's Make Progress Together!", style: TextStyle(
+            Text(
+              "Let's Make Progress Together!",
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
-                fontWeight: FontWeight.w500),
+                fontWeight: FontWeight.w500,
+              ),
             ),
             SizedBox(height: 15),
             Container(
@@ -60,19 +77,22 @@ class _homeState extends State<home> {
               decoration: BoxDecoration(
                 color: Colors.orange,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [BoxShadow(
-                 color: Colors.black,
-                 blurRadius: 10,
-                )],
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 10,
+                  ),
+                ],
               ),
             ),
+            SizedBox(height: 20,),
+            
           ],
         ),
       ),
-
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-            border: Border(top: BorderSide(color: Colors.yellow, width: 2.0)),
+          border: Border(top: BorderSide(color: Colors.yellow, width: 2.0)),
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -84,8 +104,12 @@ class _homeState extends State<home> {
           backgroundColor: Color(0xFF1c1c1e),
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.workspace_premium_rounded),
-                label: "Premium",
+              icon: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FoodPage()));
+                  },
+                  child: Icon(Icons.workspace_premium_rounded)),
+              label: "Premium",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.celebration_rounded),
@@ -113,5 +137,17 @@ class _homeState extends State<home> {
       ),
     );
   }
-}
 
+  // Signout function
+  void _signOut() async {
+    await FirebaseAuth.instance.signOut();
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Text("Logged out successfully"),
+        );
+      },
+    );
+  }
+}
