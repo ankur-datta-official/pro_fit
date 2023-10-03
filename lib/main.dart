@@ -4,6 +4,7 @@ import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/dashboard.dart';
 
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 import 'package:pro_fit/modules/shankar/home.dart';
+import 'package:pro_fit/modules/shankar/warmup.dart';
 import 'package:pro_fit/modules/user%20registration/forgotpass.dart';
 import 'package:pro_fit/modules/Legality/privacy_policy.dart';
 import 'package:pro_fit/modules/challanges/challanges.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF1c1c1e),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: homeShankar(),
 
       /*home: AnimatedSplashScreen(
           splash: Center(
