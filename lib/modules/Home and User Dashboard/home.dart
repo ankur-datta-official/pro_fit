@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/dashboard.dart';
 import 'package:pro_fit/modules/challanges/challanges.dart';
 import 'package:pro_fit/modules/nutrition/nutritionpage.dart';
+import 'package:pro_fit/modules/user%20registration/login.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -32,11 +33,17 @@ class _homeState extends State<home> {
               flex: 9,
             ),
             Expanded(
-              child: Icon(
-                Icons.logout_rounded,
-                color: Colors.white,
-                size: 32,
-              ),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => LoginPage()));
+                },
+                icon: Icon(
+                  Icons.logout_rounded,
+                  color: Colors.white,
+                  size: 32,
+                ),
+            ),
               flex: 1,
             ),
           ],
