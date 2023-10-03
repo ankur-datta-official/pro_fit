@@ -5,6 +5,7 @@ import 'package:pro_fit/modules/user%20registration/forgotpass.dart';
 import 'package:pro_fit/modules/user%20registration/signup.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pro_fit/navigation.dart';
+import 'package:pro_fit/navigation.dart';
 
 class LoginPage extends StatefulWidget {
   @override

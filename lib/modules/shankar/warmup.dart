@@ -47,7 +47,7 @@ class warmup extends StatelessWidget {
                   ),
                 ),
                 background: Image.asset(
-                  "images/Warm-up.png",
+                  "assets/images/Warm-up.png",
                   fit: BoxFit.fitHeight,
                 ),
               ),
