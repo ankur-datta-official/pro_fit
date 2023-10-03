@@ -35,49 +35,43 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 50, right: 15, left: 15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              TextField(
-                controller: _emailController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(labelText: "Email"),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 50, right: 15, left: 15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(labelText: "Password"),
+              obscureText: true, // Hide password
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: _confirmPasswordController,
+              decoration: InputDecoration(labelText: "Confirm Password"),
+              obscureText: true, // Hide password
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(
+              onPressed: _signUp,
+              style: ElevatedButton.styleFrom(primary: Color(0xffFFFF00)),
+              child: Text(
+                'Sign Up',
+                style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: _passwordController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(labelText: "Password"),
-                obscureText: true, // Hide password
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: _confirmPasswordController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(labelText: "Confirm Password"),
-                obscureText: true, // Hide password
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              ElevatedButton(
-                onPressed: _signUp,
-                style: ElevatedButton.styleFrom(primary: Color(0xffFFFF00)),
-                child: Text(
-                  'Sign Up',
-                  style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -97,14 +91,8 @@ class _SignUpPageState extends State<SignUpPage> {
         
         // User registration successful, you can navigate to another screen or perform other actions.
         print("Sign Up successfull ");
-        SnackBar(
-          content: Text("Registration Successful!"),
-        );
       } catch (e) {
         // Handle sign-up errors here
-        SnackBar(
-          content: Text("Sign-up failed. Please try again."),
-        );
         print("Sign-up error: $e");
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
