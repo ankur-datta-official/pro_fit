@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pro_fit/modules/challanges/challanges.dart';
-import 'package:pro_fit/modules/loginsignup/login.dart';
-import 'package:pro_fit/modules/loginsignup/signup.dart';
 
 import 'modules/Home and User Dashboard/dashboard.dart';
 import 'modules/Home and User Dashboard/home.dart';
+import 'modules/user registration/login.dart';
+import 'modules/user registration/signup.dart';
 
 class bottomNavigation extends StatefulWidget {
   const bottomNavigation({super.key});

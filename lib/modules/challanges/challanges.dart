@@ -31,7 +31,13 @@ class ChallangesPage extends StatelessWidget {
             ),
             SizedBox(height: 20,),
             Container(
-              child: Center(child: Text("Complete Task",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)),height: 50,width: double.infinity,decoration: BoxDecoration(color: Colors.amber,borderRadius: BorderRadius.circular(30)),),
+              child: Center(child: Text("Complete Task",style: TextStyle(
+                  fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)),
+              height: 50,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.yellow,
+                  borderRadius: BorderRadius.circular(30)),),
               SizedBox(height: 10,),
             Container(
               child: ListView.builder(

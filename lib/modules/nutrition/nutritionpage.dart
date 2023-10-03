@@ -29,7 +29,7 @@ class NutritionPage extends StatelessWidget {
           ),
           backgroundColor: Color(0xff1d1a1b),
           bottom: TabBar(
-            labelColor: Colors.amber,
+            labelColor: Colors.yellow,
             tabs: [
               Tab(text: 'Breakfast'),
               Tab(text: 'Lunch'),
@@ -75,7 +75,7 @@ class NutritionPage extends StatelessWidget {
                     children: [
                       Text(
                         "Rise and Dine: ",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       Text(
                         "Start Your Day with",
@@ -96,11 +96,11 @@ class NutritionPage extends StatelessWidget {
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15), color: Colors.amber),
+                  borderRadius: BorderRadius.circular(25), color: Colors.yellow),
               child: Center(
                   child: Text(
                 " Breakfast Foods ",
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               )),
             ),
           ),
@@ -112,57 +112,57 @@ class NutritionPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Protein-rich foods:",
+                      "Protein-Rich Foods:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      "eggs, Greek yogurt, lean meats, tofu, and nut butter",
-                      style: TextStyle(color: Colors.white),
+                      "Eggs, Greek Yogurt, Lean Meats, Tofu & Nut Butter",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      "Whole grains:",
+                      "Whole Grains:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      "eggs, Greek yogurt, lean meats, tofu, and nut butter",
-                      style: TextStyle(color: Colors.white),
+                      "Eggs, Greek Yogurt, Lean Meats, Tofu & Nut Butter",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      "Fruits",
+                      "Fruits:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      "berries, bananas, apples, and citrus fruits.",
-                      style: TextStyle(color: Colors.white),
+                      "Berries, Bananas, Apples & Citrus Fruits.",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      "Fiber-rich foods:",
+                      "Fiber-Rich Foods:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      " bran cereals, whole-grain bread, and chia seeds.",
-                      style: TextStyle(color: Colors.white),
+                      " Bran Cereals, Whole-Grain Bread & Chia Seeds.",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
                 )
@@ -222,11 +222,11 @@ class NutritionPage extends StatelessWidget {
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15), color: Colors.amber),
+                  borderRadius: BorderRadius.circular(25), color: Colors.yellow),
               child: Center(
                   child: Text(
                 " Lunch Foods ",
-                style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               )),
             ),
           ),
