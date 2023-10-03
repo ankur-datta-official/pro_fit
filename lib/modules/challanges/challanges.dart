@@ -45,10 +45,10 @@ class ChallangesPage extends StatelessWidget {
                 itemCount: taskTitles.length, // Use the length of your lists
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    title: Text(taskTitles[index],style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)), // Use taskTitles list
+                    title: Text(taskTitles[index],style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600,color: Colors.yellow)), // Use taskTitles list
                     subtitle: Padding(
                       padding: const EdgeInsets.only(left: 10,right: 5.0,),
-                      child: Text(taskSubtitles[index],style: TextStyle(fontSize: 17),),
+                      child: Text(taskSubtitles[index],style: TextStyle(fontSize: 17,color: Colors.white),),
                     ), // Use taskSubtitles list
                   );
                 },
@@ -66,6 +66,7 @@ class ChallangesPage extends StatelessWidget {
     " Upper Body Strength",
     "Rest day or practice yoga to improve flexibility and reduce stress.",
     "Lower Body Strength",
+    "Full-Body Circuit",
     "Full-Body Circuit",
   ];
 

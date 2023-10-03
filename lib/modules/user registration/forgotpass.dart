@@ -57,15 +57,28 @@ void dispose(){
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black26,
-        title: Text('Password Recovery'),
+       appBar: AppBar(
+        leading: new IconButton(
+          onPressed: () {Navigator.of(context).pop();},
+          icon: Icon(Icons.arrow_circle_left_outlined,
+            color: Colors.white, size: 34,),
+        ),
+        backgroundColor: Color(0xFF1c1c1e),
+        title: Center(
+          child: Text("Reset Password",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 26,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Enter your Email to Reset Password"),
+            Text("Enter your Email to Reset Password",style: TextStyle(color: Colors.white),),
             Padding(
               padding: const EdgeInsets.all(16),
               child: TextField(
