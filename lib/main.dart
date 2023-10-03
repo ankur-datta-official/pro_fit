@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF1c1c1e),
         useMaterial3: true,
       ),
-      home: FoodPage(),
+      home: LoginPage(),
 
       /*home: AnimatedSplashScreen(
           splash: Center(
