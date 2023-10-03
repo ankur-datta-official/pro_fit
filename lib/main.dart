@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF1c1c1e),
         useMaterial3: true,
       ),
-      home: homeShankar(),
+      home: PasswordRecover(),
 
       /*home: AnimatedSplashScreen(
           splash: Center(
