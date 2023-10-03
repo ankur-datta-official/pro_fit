@@ -15,8 +15,9 @@ final TextEditingController _emailController = TextEditingController();
 void dispose(){
   _emailController.dispose;
   super.dispose();  // to avoid memory leak
+}
 
-}Future<void> PasswordReset() async {
+Future<void> PasswordReset() async {
   try {
     await FirebaseAuth.instance.sendPasswordResetEmail(
       email: _emailController.text.trim(),
@@ -58,17 +59,36 @@ void dispose(){
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black26,
-        title: Text('Password Recovery'),
+        leading: new IconButton(
+          onPressed: () {Navigator.of(context).pop();},
+          icon: Icon(Icons.arrow_circle_left_outlined,
+            color: Colors.white, size: 34,),
+        ),
+        backgroundColor: Color(0xFF1c1c1e),
+        title: Center(
+          child: Text("PASSWORD RECOVERY",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 26,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 50),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text("Enter your Email to Reset Password"),
+            Text("Enter your Email to Reset Password", style: TextStyle(
+                color: Colors.white,
+              fontSize: 20,
+            ),),
+            SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.all(16),
               child: TextField(
+                style: TextStyle(color: Colors.white),
                 controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
@@ -76,13 +96,18 @@ void dispose(){
                 ),
               ),
             ),
+            SizedBox(height: 10,),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
               onPressed: PasswordReset,
               child: Container(
                 height: 45,
                 width: 150,
-                child: Center(child: Text("Reset Password",style: TextStyle(color: Colors.black,fontSize: 16),))),
+                child: Center(child: Text("Reset Password",style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  fontWeight: FontWeight.w600
+                ),))),
             ),
           ],
         ),
