@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 import 'package:pro_fit/modules/user%20registration/forgotpass.dart';
 import 'package:pro_fit/modules/user%20registration/signup.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pro_fit/navigation.dart';
-//temp cmnt
+import 'package:pro_fit/navigation.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -108,6 +109,20 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),
+                 Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Center(child: Text("--or with--",style: TextStyle(fontSize: 16,color: Colors.white),)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    child: GestureDetector(
+                        onTap: _google,
+                        child: Image.asset("assets/images/google.png")),
+                    height: 35,
+                    width: 45,
+                  ),
+                ),
                 SizedBox(height: 20,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -151,6 +166,45 @@ class _LoginPageState extends State<LoginPage> {
           content: Text("Login failed. Please check your credentials."),
         ),
       );
+    }
+  }
+
+  Future<void> _google() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await GoogleSignIn().signIn();
+
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken,
+        );
+
+        final UserCredential authResult =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+
+        final User? user = authResult.user;
+
+        if (user != null) {
+          // Successfully signed in with Google, you can now use 'user' for further actions.
+          print('Logged in with Google: ${user.displayName}');
+          Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context)=>bottomNavigation()));
+//direct home pe navigate
+        
+        } else {
+          // Handle sign-in failure.
+          print('Google Sign-In failed.');
+        }
+      } else {
+        // Handle canceled sign-in.
+        print('Google Sign-In canceled.');
+      }
+    } catch (error) {
+      // Handle other errors.
+      print('Error during Google Sign-In: $error');
     }
   }
 
