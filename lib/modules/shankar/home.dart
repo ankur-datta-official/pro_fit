@@ -2,7 +2,6 @@
 //import 'dart:js';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 // import 'arms.dart';
 // import 'back.dart';
 // import 'chest.dart';
@@ -16,7 +15,23 @@ class homeShankar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1c1c1e),
-      appBar: appBar(),
+      appBar: AppBar(
+        leading: new IconButton(
+          onPressed: () {Navigator.of(context).pop();},
+          icon: Icon(Icons.arrow_circle_left_outlined,
+            color: Colors.white, size: 34,),
+        ),
+        backgroundColor: Color(0xFF1c1c1e),
+        title: Center(
+          child: Text("WORKOUT LIBRARY",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 26,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
       body: body(),
     );
   }
@@ -26,7 +41,7 @@ class homeShankar extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(
-            top: 40,
+            top: 20,
             left: 10,
             right: 10,
           ),
@@ -43,10 +58,10 @@ class homeShankar extends StatelessWidget {
             // ignore: prefer_const_constructors
             child: Center(
               child: const Text(
-                'Chest exercise',
+                'Warm-Up Exercise',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -71,10 +86,10 @@ class homeShankar extends StatelessWidget {
             ),
             child: const Center(
               child: Text(
-                'Chest exercise',
+                'Chest Exercise',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -99,10 +114,10 @@ class homeShankar extends StatelessWidget {
             ),
             child: const Center(
               child: Text(
-                'Back exercise',
+                'Back Exercise',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -127,10 +142,10 @@ class homeShankar extends StatelessWidget {
             ),
             child: const Center(
               child: Text(
-                'Legs exercise',
+                'Legs Exercise',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -156,10 +171,10 @@ class homeShankar extends StatelessWidget {
             ),
             child: const Center(
               child: Text(
-                'Arms exercise',
+                'Arms Exercise',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -167,38 +182,6 @@ class homeShankar extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  AppBar appBar() {
-    return AppBar(
-      title: const Text(
-        'WORKOUT LIBRARY',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 24,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-      backgroundColor: Color(0xFF1c1c1e),
-      elevation: 0.0, //to remove the shadow of appbar
-      centerTitle: true,
-      leading: GestureDetector(
-        onTap: () {},
-        child: Container(
-          margin: const EdgeInsets.all(10),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: const Color(0xff000000),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: SvgPicture.asset(
-            'assets/icons/Group.svg',
-            height: 35,
-            width: 35,
-          ),
-        ),
-      ),
     );
   }
 }
