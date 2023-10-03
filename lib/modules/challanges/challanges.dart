@@ -9,11 +9,19 @@ class ChallangesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF1c1c1e),
         title: Center(
-          child: Text("Daily Challenges"),
+          child: Text("DAILY CHALLENGES",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 26,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: <Widget>[
             Container(
@@ -23,7 +31,13 @@ class ChallangesPage extends StatelessWidget {
             ),
             SizedBox(height: 20,),
             Container(
-              child: Center(child: Text("Complete Task",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)),height: 50,width: double.infinity,decoration: BoxDecoration(color: Colors.amber,borderRadius: BorderRadius.circular(30)),),
+              child: Center(child: Text("Complete Task",style: TextStyle(
+                  fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)),
+              height: 50,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.yellow,
+                  borderRadius: BorderRadius.circular(30)),),
               SizedBox(height: 10,),
             Container(
               child: ListView.builder(
