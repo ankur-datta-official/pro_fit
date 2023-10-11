@@ -1,27 +1,77 @@
-
-import 'dart:typed_data';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
 import 'package:pro_fit/modules/Legality/privacy_policy.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class dashboard extends StatefulWidget {
-  const dashboard({super.key});
+  final String userUid;
+
+  dashboard({required this.userUid});
 
   @override
   State<dashboard> createState() => _dashboardState();
 }
-
 class _dashboardState extends State<dashboard> {
+  String name = "";
+  String email = "";
+  TextEditingController nameController = TextEditingController();
+  bool isEditing = false; // Track if the user is in editing mode
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  // Fetch user data from Firestore using the provided User ID
+  Future<void> fetchUserData() async {
+    String userId = widget.userUid; //fetched uid use karega 
+    try {
+      DocumentSnapshot<Map<String, dynamic>> snapshot =
+          await FirebaseFirestore.instance.collection("User").doc(userId).get();
+      if (snapshot.exists) {
+        setState(() {
+          name = snapshot.data()?["Name"] ?? "";
+          email = snapshot.data()?["Email"] ?? "";
+          nameController.text = name;
+        });
+      }
+    } catch (e) {
+     
+      print("Error fetching data: $e");
+    }
+  }
+
+ // update name 
+  Future<void> updateNameInFirestore() async {
+    String newName = nameController.text;
+    String userId = widget.userUid;
+
+    try {
+      await FirebaseFirestore.instance.collection("User").doc(userId).update({
+        "Name": newName,
+      });
+      setState(() {
+        name = newName; 
+        isEditing = false; 
+      });
+      print("Name updated successfully.");
+    } catch (e) {
+      print("Error updating name: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF1c1c1e),
-        title: Center(
-          child: Text("DASHBOARD",
+        title: Padding(
+          padding: const EdgeInsets.only(left: 40, right: 20),
+          child: Text(
+            "DASHBOARD",
             style: TextStyle(
               color: Colors.white,
               fontSize: 26,
@@ -32,7 +82,7 @@ class _dashboardState extends State<dashboard> {
       ),
       body: ListView(
         children: [
-          //User Profile photo edit
+          // User Profile photo edit
           Center(
             child: Container(
               width: 150,
@@ -54,52 +104,74 @@ class _dashboardState extends State<dashboard> {
               ),
             ),
           ),
-          SizedBox(height: 30,),
-          //User name edit section
+          SizedBox(
+            height: 30,
+          ),
+          // Display name and email
           Padding(
             padding: EdgeInsets.only(left: 20, right: 20),
-            child: TextField(
-              style: TextStyle(color: Colors.white, fontSize: 17),
-              decoration: InputDecoration(
-                labelText: "Name",
-                labelStyle: TextStyle(color: Colors.yellow),
-                hintText: "Full Name",
-                hintStyle: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
-                  fontSize: 17
+            child: Text("Name: ${isEditing ? '' : name}",
+                style: TextStyle(color: Colors.yellow)),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Text("Email: $email", style: TextStyle(color: Colors.yellow)),
+          ),
+          SizedBox(height: 10.0),
+
+          if (!isEditing) // Show edit button if not in editing mode
+            OutlinedButton(
+              onPressed: () {
+                setState(() {
+                  isEditing = true; // Enter editing mode
+                });
+              },
+              child: Text(
+                "Edit",
+                style: TextStyle(
+                  color: Colors.yellow,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
-          ),
-          //User Email edit section
-          Padding(
-            padding: EdgeInsets.only(left: 20, right: 20),
-            child: TextField(
-              style: TextStyle(color: Colors.white, fontSize: 17),
-              decoration: InputDecoration(
-                labelText: "Email",
-                labelStyle: TextStyle(color: Colors.yellow),
-                hintText: "example@domain",
-                hintStyle: TextStyle(
-                    color: Colors.white.withOpacity(0.6),
-                    fontSize: 17
+          if (isEditing)
+            Column(
+              children: [
+                // Text field for editing the name
+                Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: TextField(
+                    controller: nameController,
+                    style: TextStyle(color: Colors.white, fontSize: 17),
+                    decoration: InputDecoration(
+                      labelText: "Name",
+                      labelStyle: TextStyle(color: Colors.yellow),
+                      hintText: "Full Name",
+                      hintStyle: TextStyle(
+                          color: Colors.white.withOpacity(0.6), fontSize: 17),
+                    ),
+                  ),
                 ),
-              ),
+
+                // Save button
+                OutlinedButton(
+                  onPressed: updateNameInFirestore,
+                  child: Text(
+                    "Save",
+                    style: TextStyle(
+                      color: Colors.yellow,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
             ),
+          SizedBox(
+            height: 50,
           ),
-          SizedBox(height: 80,),
-          //Update Save button
-          OutlinedButton(
-              onPressed: () {  },
-              child: Text("Save", style: TextStyle(
-                color: Colors.yellow,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-              ),
-          ),
-          SizedBox(height: 50,),
-          //Privacy Policy section
+          // Privacy Policy section
           InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
@@ -112,15 +184,20 @@ class _dashboardState extends State<dashboard> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Expanded(
-                    child: Text("Privacy Policy", style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600
-                    ),),
+                    child: Text(
+                      "Privacy Policy",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600),
+                    ),
                     flex: 4,
                   ),
                   Expanded(
-                      child: Icon(Icons.arrow_forward_ios_rounded, color: Colors.white,),
+                    child: Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: Colors.white,
+                    ),
                     flex: 1,
                   ),
                 ],
@@ -128,8 +205,7 @@ class _dashboardState extends State<dashboard> {
             ),
           ),
         ],
-      ) ,
+      ),
     );
   }
 }
-
