@@ -7,7 +7,9 @@ import 'modules/user registration/login.dart';
 import 'modules/user registration/signup.dart';
 
 class bottomNavigation extends StatefulWidget {
-  const bottomNavigation({super.key});
+  final String userUid;
+
+  bottomNavigation({required this.userUid});
 
   @override
   State<bottomNavigation> createState() => _bottomNavigationState();
@@ -15,13 +17,19 @@ class bottomNavigation extends StatefulWidget {
 
 class _bottomNavigationState extends State<bottomNavigation> {
   int _currentIndex = 2;
-  final List<Widget> _pages = [
-    LoginPage(),
-    ChallangesPage(),
-    home(),
-    SignUpPage(),
-    dashboard(),
-  ];
+  List<Widget> _pages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      LoginPage(),
+      ChallangesPage(),
+      home(userUid: widget.userUid),
+      SignUpPage(),
+      dashboard(userUid: widget.userUid),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +65,7 @@ class _bottomNavigationState extends State<bottomNavigation> {
               label: "Rewards",
             ),
             BottomNavigationBarItem(
+              
               icon: Icon(Icons.home_rounded),
               label: "Home",
             ),

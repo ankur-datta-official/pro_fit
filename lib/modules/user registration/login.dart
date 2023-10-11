@@ -22,7 +22,8 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         backgroundColor: Color(0xFF1c1c1e),
         title: Center(
-          child: Text("SIGN IN",
+          child: Text(
+            "SIGN IN",
             style: TextStyle(
               color: Colors.white,
               fontSize: 26,
@@ -66,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(
                     labelText: 'Email',
                   ),
+                  style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(height: 10.0),
                 TextField(
@@ -75,9 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                     labelText: 'Password',
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscureText
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
                         color: Colors.grey,
                       ),
                       onPressed: () {
@@ -87,15 +87,22 @@ class _LoginPageState extends State<LoginPage> {
                       },
                     ),
                   ),
+                  style: TextStyle(color: Colors.white),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>PasswordRecover()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PasswordRecover()));
                       },
-                      child: Text("Forgot Password ?", style: TextStyle(fontSize: 16, color: Colors.yellow),),
+                      child: Text(
+                        "Forgot Password ?",
+                        style: TextStyle(fontSize: 16, color: Colors.yellow),
+                      ),
                     )
                   ],
                 ),
@@ -105,12 +112,19 @@ class _LoginPageState extends State<LoginPage> {
                   style: ElevatedButton.styleFrom(primary: Color(0xffFFFF00)),
                   child: Text(
                     'Sign In',
-                    style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
-                 Padding(
+                Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Center(child: Text("--or with--",style: TextStyle(fontSize: 16,color: Colors.white),)),
+                  child: Center(
+                      child: Text(
+                    "--or with--",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  )),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -122,11 +136,16 @@ class _LoginPageState extends State<LoginPage> {
                     width: 45,
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account?", style: TextStyle(color: Colors.white, fontSize: 20),),
+                    Text(
+                      "Don't have an account?",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -151,12 +170,15 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _login() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
+
+      User? user = userCredential.user;
       // Successfully logged in, you can navigate to the next screen here.
-      Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>bottomNavigation(userUid: user!.uid)));
     } catch (e) {
       // Handle login errors here (e.g., display error message).
       print("Login error: $e");
@@ -170,8 +192,10 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _google() async {
     try {
-      final GoogleSignInAccount? googleSignInAccount =
-          await GoogleSignIn().signIn();
+      final GoogleSignInAccount? googleSignInAccount = await GoogleSignIn(
+        forceCodeForRefreshToken:
+            true, // Set forceCodeForRefreshToken to true to disable Smart Lock(smart lock matlab it auto log in privious one)
+      ).signIn();
 
       if (googleSignInAccount != null) {
         final GoogleSignInAuthentication googleSignInAuthentication =
@@ -190,9 +214,11 @@ class _LoginPageState extends State<LoginPage> {
         if (user != null) {
           // Successfully signed in with Google, you can now use 'user' for further actions.
           print('Logged in with Google: ${user.displayName}');
-          Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context)=>bottomNavigation()));
-//direct home pe navigate
-        
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => bottomNavigation(userUid: user!.uid)),
+          );
         } else {
           // Handle sign-in failure.
           print('Google Sign-In failed.');
