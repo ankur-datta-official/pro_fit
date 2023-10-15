@@ -1,6 +1,6 @@
+//updated
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-//temp cmnt
 
 class PasswordRecover extends StatefulWidget {
   const PasswordRecover({Key? key});
@@ -58,26 +58,21 @@ void dispose(){
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         leading: new IconButton(
-          onPressed: () {Navigator.of(context).pop();},
           icon: Icon(Icons.arrow_circle_left_outlined,
             color: Colors.white, size: 34,),
+          onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Color(0xFF1c1c1e),
-        title: Center(
-          child: Text("Reset Password",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 26,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+        title: Text('Password Recovery', style: TextStyle(
+          color: Colors.white,
+          fontSize: 26,
+          fontWeight: FontWeight.w600,),),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 25),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Enter your Email to Reset Password",style: TextStyle(color: Colors.white),),
             Padding(
@@ -88,15 +83,21 @@ void dispose(){
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
+                style: TextStyle(color: Colors.white),
               ),
             ),
+            SizedBox(height: 20),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
               onPressed: PasswordReset,
               child: Container(
                 height: 45,
                 width: 150,
-                child: Center(child: Text("Reset Password",style: TextStyle(color: Colors.black,fontSize: 16),))),
+                child: Center(
+                    child: Text("Reset Password",style: TextStyle(
+                        color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,),))),
             ),
           ],
         ),
