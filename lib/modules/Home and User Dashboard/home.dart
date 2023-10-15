@@ -2,16 +2,52 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/dashboard.dart';
 import 'package:pro_fit/modules/challanges/challanges.dart';
+import 'package:pro_fit/modules/nutrition/foodpage.dart';
 import 'package:pro_fit/modules/nutrition/nutritionpage.dart';
 import 'package:pro_fit/modules/user%20registration/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class home extends StatefulWidget {
-  const home({super.key});
+   
+   final String userUid;
+
+  home({required this.userUid});
 
   @override
   State<home> createState() => _homeState();
 }
+
 class _homeState extends State<home> {
+  
+  String name = "";
+  String email = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  // Fetch user data from Firestore using the provided User ID
+  Future<void> fetchUserData() async {
+    String userId = widget.userUid; // Use the provided User ID
+    try {
+      DocumentSnapshot<Map<String, dynamic>> snapshot =
+          await FirebaseFirestore.instance.collection("User").doc(userId).get();
+      if (snapshot.exists) {
+        setState(() {
+          name = snapshot.data()?["Name"] ?? "";
+          email = snapshot.data()?["Email"] ?? "";
+        });
+      }
+    } catch (e) {
+      // Handle any errors that may occur during data fetching
+      print("Error fetching data: $e");
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,38 +68,44 @@ class _homeState extends State<home> {
               ),
               flex: 9,
             ),
-            Expanded(
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => LoginPage()));
-                },
-                icon: Icon(
-                  Icons.logout_rounded,
-                  color: Colors.white,
-                  size: 32,
-                ),
-            ),
-              flex: 1,
-            ),
+           Expanded(
+  child: IconButton(
+    onPressed: () async {
+      try {
+        await FirebaseAuth.instance.signOut();
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        ));
+      } catch (e) {
+        print('Error during sign out: $e');
+      }
+    },
+    icon: Icon(
+      Icons.logout_rounded,
+      color: Colors.white,
+      size: 32,
+    ),
+  ),
+  flex: 1,
+),
           ],
         ),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //Welcome User
             Text(
-              "Hi, User",
+              "Hi, $name",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                   fontWeight: FontWeight.w700),
             ),
-            Text(
+            const Text(
               "Let's Make Progress Together!",
               style: TextStyle(
                   color: Colors.white,
@@ -193,7 +235,7 @@ class _homeState extends State<home> {
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => NutritionPage()));
+                            builder: (context) => FoodPage()));
                       },
                     ),
                     height: 175,
@@ -268,4 +310,6 @@ class _homeState extends State<home> {
       ),
     );
   }
+    
+
 }

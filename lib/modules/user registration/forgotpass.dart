@@ -74,7 +74,7 @@ void dispose(){
         padding: const EdgeInsets.only(top: 25),
         child: Column(
           children: <Widget>[
-            Text("Enter your Email to Reset Password"),
+            Text("Enter your Email to Reset Password",style: TextStyle(color: Colors.white),),
             Padding(
               padding: const EdgeInsets.all(16),
               child: TextField(

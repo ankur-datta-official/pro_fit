@@ -186,16 +186,17 @@ class NutritionPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 15),
                   child: Column(
                     children: [
+                    
                       Text(
-                        "Food in Lunch ",
+                        "Savor and Refuel!",
                         style: TextStyle(color: Colors.white),
                       ),
                       Text(
-                        "",
+                        "Enjoy Wholesome",
                         style: TextStyle(color: Colors.white),
                       ),
-                      Text(
-                        "",
+                        Text(
+                        "Midday Meal",
                         style: TextStyle(color: Colors.white),
                       ),
                     ],
@@ -241,12 +242,16 @@ class NutritionPage extends StatelessWidget {
                       "Lean Proteins:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow ),
                     ),
                     Text(
-                      "grilled chicken, turkey, fish, legumes like beans and lentils.",
-                      style: TextStyle(color: Colors.white),
+                      "Grilled Chicken, Turkey, Fish, legumes like ",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
+                    ),
+                    Text(
+                      "Beans and Lentils.",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                     SizedBox(
                       height: 10,
@@ -255,12 +260,16 @@ class NutritionPage extends StatelessWidget {
                       "Vegetables: ",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      "green vegetables have vitamins, minerals, and fiber.",
-                      style: TextStyle(color: Colors.white),
+                      "Green Vegetables have Vitamins, Minerals,",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
+                    ),
+                     Text(
+                      "and Fiber.",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                     SizedBox(
                       height: 10,
@@ -269,12 +278,12 @@ class NutritionPage extends StatelessWidget {
                       "Healthy Fats:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      "avocados, nuts, seeds, or olive oil. ",
-                      style: TextStyle(color: Colors.white),
+                      "  Avocados, Nuts, Seeds, or Olive Oil. ",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                     SizedBox(
                       height: 10,
@@ -283,12 +292,12 @@ class NutritionPage extends StatelessWidget {
                       "Portion Control: ",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
                       " Pay attention to portion sizes to avoid overeating. ",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                   ],
                 )
@@ -326,15 +335,15 @@ class NutritionPage extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        "Dinner Food ",
+                        "Dine and Unwind",
                         style: TextStyle(color: Colors.white),
                       ),
                       Text(
-                        " last meal of the day",
+                        " Last meal of the day",
                         style: TextStyle(color: Colors.white),
                       ),
                       Text(
-                        " ",
+                        "Dinner Food",
                         style: TextStyle(color: Colors.white),
                       ),
                     ],
@@ -348,11 +357,11 @@ class NutritionPage extends StatelessWidget {
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15), color: Colors.amber),
+                  borderRadius: BorderRadius.circular(15), color: Colors.yellow),
               child: Center(
                   child: Text(
                 " Dinner Foods ",
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600),
               )),
             ),
           ),
@@ -367,13 +376,12 @@ class NutritionPage extends StatelessWidget {
                       "Complex Carbohydrates:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
                       "Opt for complex carbohydrates like sweet potatoes",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                      style: TextStyle(color: Colors.white,fontSize: 16)),
                     SizedBox(
                       height: 10,
                     ),
@@ -381,12 +389,16 @@ class NutritionPage extends StatelessWidget {
                       "Salads:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      "side salad with your dinner for added fiber and vitamins.",
-                      style: TextStyle(color: Colors.white),
+                      "Side salad with your dinner for added ",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
+                    ),
+                    Text(
+                      " Fiber and Vitamins.",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                     SizedBox(
                       height: 10,
@@ -395,12 +407,12 @@ class NutritionPage extends StatelessWidget {
                       "Lean Proteins:",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      "chicken, turkey, fish, or plant-based options.",
-                      style: TextStyle(color: Colors.white),
+                      "Chicken, Turkey, Fish, or Plant-based options.",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                     SizedBox(
                       height: 10,
@@ -409,16 +421,16 @@ class NutritionPage extends StatelessWidget {
                       "Limit Late-Night Snacking: ",
                       style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow),
                     ),
                     Text(
-                      "Try to finish eating a few hours before bedtime to ",
-                      style: TextStyle(color: Colors.white),
+                      "Try to finish eating a few hours before",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                     Text(
-                      " allow for proper digestion",
-                      style: TextStyle(color: Colors.white),
+                      " -bedtime to  allow for proper digestion",
+                      style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                   ],
                 )
