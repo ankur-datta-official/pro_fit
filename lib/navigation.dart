@@ -70,7 +70,7 @@ class _bottomNavigationState extends State<bottomNavigation> {
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_rounded),
+              icon: Icon(Icons.fitness_center_rounded),
               label: "Notifications",
             ),
             BottomNavigationBarItem(

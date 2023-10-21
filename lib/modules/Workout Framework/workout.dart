@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 // import 'legs.dart';
 // import 'warmup.dart';
 
-class homeShankar extends StatelessWidget {
-  const homeShankar({super.key});
+class Workout extends StatelessWidget {
+  const Workout({super.key});
 
   @override
   Widget build(BuildContext context) {
