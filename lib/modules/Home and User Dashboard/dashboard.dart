@@ -111,13 +111,14 @@ class _dashboardState extends State<dashboard> {
           Padding(
             padding: EdgeInsets.only(left: 20, right: 20),
             child: Text("Name: ${isEditing ? '' : name}",
-                style: TextStyle(color: Colors.yellow)),
+                style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w500)),
           ),
+          SizedBox(height: 10),
           Padding(
             padding: EdgeInsets.only(left: 20, right: 20),
-            child: Text("Email: $email", style: TextStyle(color: Colors.yellow)),
+            child: Text("Email: $email", style: TextStyle(color: Colors.white70, fontSize: 22, fontWeight: FontWeight.w500)),
           ),
-          SizedBox(height: 10.0),
+          SizedBox(height: 27),
 
           if (!isEditing) // Show edit button if not in editing mode
             OutlinedButton(

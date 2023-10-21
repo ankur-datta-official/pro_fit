@@ -114,28 +114,12 @@ class _homeState extends State<home> {
             ),
             SizedBox(height: 30),
             //Today's Workout plan card
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Text(
-                    "Today's Workout Plan",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  flex: 6,
-                ),
-                Expanded(
-                  child: Text("Mon 18, Sep",
-                      style: TextStyle(
-                          color: Colors.yellow,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400)),
-                  flex: 2,
-                ),
-              ],
+            Text(
+              "Today's Workout Plan",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700),
             ),
             SizedBox(height: 13),
             Card(
