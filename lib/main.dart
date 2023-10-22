@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/dashboard.dart';
 
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/home.dart';
+import 'package:pro_fit/modules/Notification/firebase_ms.dart';
 import 'package:pro_fit/modules/Progress%20Analytics/Progress.dart';
 import 'package:pro_fit/modules/Workout%20Framework/workout.dart';
 import 'package:pro_fit/modules/shankar/arms.dart';
@@ -25,14 +26,17 @@ import 'package:firebase_core/firebase_core.dart';
 
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/workout.dart';
 //import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/loginsignup/signup.dart';
+final navigatorKey = GlobalKey<NavigatorState>();
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure that Flutter is initialized.
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseApi().initNotifications();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -47,6 +51,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: notifi(),
+      navigatorKey: navigatorKey,
+      routes: {
+    '/notification': (context) => notifi(),
+    // Define other routes here.
+  },
+  // ...
+
 
       /*home: AnimatedSplashScreen(
           splash: Center(

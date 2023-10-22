@@ -43,6 +43,7 @@ dependencies:
   google_sign_in: ^6.1.5
   firebase_ui_oauth_google: ^1.2.11
   cloud_firestore: ^4.9.3
+  firebase_messaging: ^14.7.1
   #cloud_firestore: ^4.9.3
 
 dev_dependencies:

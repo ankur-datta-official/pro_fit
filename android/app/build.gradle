@@ -61,6 +61,8 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    //to supress the warnings
+   
 }
 
 flutter {
