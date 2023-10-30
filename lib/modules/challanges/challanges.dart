@@ -10,6 +10,11 @@ class ChallangesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF1c1c1e),
+        leading: new IconButton(
+          icon: Icon(Icons.arrow_circle_left_outlined,
+            color: Colors.white, size: 34,),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: Center(
           child: Text("DAILY CHALLENGES",
             style: TextStyle(

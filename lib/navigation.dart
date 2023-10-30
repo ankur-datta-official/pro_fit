@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pro_fit/modules/Notification/notification.dart';
+import 'package:pro_fit/modules/Workout%20Framework/workout.dart';
 import 'package:pro_fit/modules/challanges/challanges.dart';
 
 import 'modules/Home and User Dashboard/dashboard.dart';
@@ -16,17 +18,15 @@ class bottomNavigation extends StatefulWidget {
 }
 
 class _bottomNavigationState extends State<bottomNavigation> {
-  int _currentIndex = 2;
+  int _currentIndex = 1;
   List<Widget> _pages = [];
 
   @override
   void initState() {
     super.initState();
     _pages = [
-      LoginPage(),
-      ChallangesPage(),
+      notifi(),
       home(userUid: widget.userUid),
-      SignUpPage(),
       dashboard(userUid: widget.userUid),
     ];
   }
@@ -56,22 +56,21 @@ class _bottomNavigationState extends State<bottomNavigation> {
             });
           },
           items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.workspace_premium_rounded),
-              label: "Premium",
-            ),
-            BottomNavigationBarItem(
+            /*BottomNavigationBarItem(
               icon: Icon(Icons.celebration_rounded),
               label: "Rewards",
+            ),*/
+            /*BottomNavigationBarItem(
+              icon: Icon(Icons.fitness_center_rounded),
+              label: "Workout",
+            ),*/
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications_rounded),
+              label: "Notifications",
             ),
             BottomNavigationBarItem(
-              
               icon: Icon(Icons.home_rounded),
               label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.fitness_center_rounded),
-              label: "Notifications",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline_rounded),
