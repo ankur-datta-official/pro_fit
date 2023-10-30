@@ -10,6 +10,11 @@ class FoodPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: new IconButton(
+          onPressed: () {Navigator.of(context).pop();},
+          icon: Icon(Icons.arrow_circle_left_outlined,
+            color: Colors.white, size: 34,),
+        ),
         backgroundColor: Color(0xFF1c1c1e),
         title: Center(
           child: Text("DAILY DIET FOOD",

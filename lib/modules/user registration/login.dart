@@ -179,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
 
       User? user = userCredential.user;
       // Successfully logged in, you can navigate to the next screen here.
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>bottomNavigation(userUid: user!.uid)));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => bottomNavigation(userUid: user!.uid)));
     } catch (e) {
       // Handle login errors here (e.g., display error message).
       print("Login error: $e");

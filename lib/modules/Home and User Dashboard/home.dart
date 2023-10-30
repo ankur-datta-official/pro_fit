@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pro_fit/modules/Home%20and%20User%20Dashboard/dashboard.dart';
+import 'package:pro_fit/modules/Workout%20Framework/workout.dart';
 import 'package:pro_fit/modules/challanges/challanges.dart';
 import 'package:pro_fit/modules/nutrition/foodpage.dart';
 import 'package:pro_fit/modules/nutrition/nutritionpage.dart';
@@ -99,7 +100,7 @@ class _homeState extends State<home> {
           children: [
             //Welcome User
             Text(
-              "Hi, $name",
+              "Hi,$name",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -129,7 +130,9 @@ class _homeState extends State<home> {
                   Ink.image(
                     image: AssetImage("assets/images/img_1.png"),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Workout()));
+                      },
                     ),
                     height: 175,
                     fit: BoxFit.cover,
@@ -157,23 +160,23 @@ class _homeState extends State<home> {
               ),
             ),
             SizedBox(height: 20),
-            //Progress Tracker Card
-            Text(
-              "Progress Tracker",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700),
-            ),
+            //Challenge Card
+            Text("Fitness Challenges", style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700
+            ),),
             SizedBox(height: 13),
             Card(
               color: Color(0xFF1c1c1e),
               child: Stack(
                 children: [
-                  Ink.image(
-                    image: AssetImage("assets/images/img_2.png"),
+                  Ink.image(image: AssetImage("assets/images/img_4.png"),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ChallangesPage()));
+                      },
                     ),
                     height: 175,
                     fit: BoxFit.cover,
@@ -183,17 +186,15 @@ class _homeState extends State<home> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Fitness Stats",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          "|  Track Your Fitness Journey, One Step at a Time.",
-                          style: TextStyle(color: Colors.yellow, fontSize: 14),
-                        ),
+                        Text("Achievement Zone", style: TextStyle(
+                            color:Colors.white,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500
+                        ),),
+                        Text("|  Earn Rewards, and Crush Your Fitness Challenges!", style: TextStyle(
+                            color:Colors.yellow,
+                            fontSize: 14
+                        ),),
                       ],
                     ),
                   ),

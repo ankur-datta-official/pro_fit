@@ -68,8 +68,7 @@ class _dashboardState extends State<dashboard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF1c1c1e),
-        title: Padding(
-          padding: const EdgeInsets.only(left: 40, right: 20),
+        title: Center(
           child: Text(
             "DASHBOARD",
             style: TextStyle(
